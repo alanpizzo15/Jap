@@ -139,3 +139,23 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#busqueda {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#busca {
+  width: 300px;
+}
+
+#busq{
+  color: #0099CC;
+  background: transparent;
+  border: 2px solid #0099CC;
+  border-radius: 6px;
+}
+#busq:hover {
+  background-color: #008CBA;
+  color: white;
+}
+

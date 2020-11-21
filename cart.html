@@ -27,6 +27,55 @@
         font-size: 3.5rem;
       }
     }
+
+    #titulo {
+
+      color: whitesmoke;
+      background-color: slategray;
+    }
+
+    #total {
+      font-size: 150%;
+      margin-right: 30%;
+      float: right;
+    }
+
+    #carrito {
+      float: left;
+      margin-left: 2%;
+      width: 50%;
+    }
+
+    #panelEnvio {
+      float: right;
+      margin-right: 2%;
+      width: 43%;
+      height: 10%;
+    }
+
+    #izquierda {
+      float: left;
+      margin-left: 2%;
+      margin-top: 1%;
+      width: 50%;
+    }
+
+    #formulario {
+      display: inline-table;
+    }
+
+    #cuadrado {
+      border: solid;
+      border-color: darkgrey;
+      border-radius: 1%;
+      padding: 2%;
+      background-color: whitesmoke;
+    }
+
+    #juntos {
+      display: inline-flex;
+
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -40,17 +89,113 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <div class="dropdown">
+        <a id="nombreUsuario" href="my-profile.html"></a>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="background-color: black; border-color: black;">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;Perfil</a>
+          <a class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart" ></i>&nbsp;&nbsp;Mi Carrito</a>
+          <a onclick="logout()" class="dropdown-item" href="login.html"><i class="fas fa-window-close"></i>&nbsp;&nbsp;Cerrar Sesion</a>
+        </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <h1 id="titulo"><em>Mi Carrito</em></h1>
+
+  <div id="carrito"></div>
+  <div class="panel panel-default" id="panelEnvio">
+    <div id="cuadrado">
+      <div class="row">
+        <div class="col-2">
+          <form method="POST" id="formulario">
+            <h4 style="color: gray;">Envío:</h4>
+            Dirección:
+            <input type="text" style="width: 140%;" required>
+            <br>
+            País:
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            Codigo Postal:
+            <div id="juntos">
+              <input type="text" required>&nbsp&nbsp<input type="number" required>
+            </div>
+            <br>
+            <u>Costo de envío:</u><br>
+            <input type="radio" name="CostoEnvio" id="cinco" required>&nbsp <strong>Standard</strong> (12-15 días) Costo
+            del 5%
+            <br>
+            <input type="radio" name="CostoEnvio" id="siete" required>&nbsp <strong>Express</strong> (5-8 días) &nbsp
+            &nbsp Costo del 7%
+            <br>
+            <input type="radio" name="CostoEnvio" id="quince" required>&nbsp <strong>Premium</strong> (2-5 días) Costo
+            del 15%
+            <br> <br>
+            <button type="submit" class="btn btn-warning" id="enviar">Enviar</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ingresar datos de tarjeta de Credito</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            Elegir tarjeta de credito: <select required>
+              <option>Visa</option>
+              <option>Mastercard</option>
+            </select>
+            <br><br>
+            Nombre del titular: <input type="text" placeholder="Nombre Completo" class="form-control"
+              required>*Obligatorio
+            <br><br>
+            N° de tarjeta: <input type="number" placeholder="Número de tarjeta" class="form-control"
+              required>*Obligatorio
+            <br><br>
+            Caducidad: <input type="date" name="trip-start" required>*Obligatorio
+            <br><br>
+            Codigo de Seguridad: <input type="number" placeholder="(CVV)" style="width: 70px;" required>*Obligatorio
+            <br><br>
+            Importe: <input id="importe" type="number" placeholder="Importe total" required> <select required>
+              <option>USD</option>
+              <option>EUR</option>
+              <option>UYU</option>
+            </select>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-warning">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="container-md" id="izquierda">
+    <p style="font-size: 180%; color: lightslategrey;"><strong><i>Factura de tu compra</i></strong></p>
+    <hr style="color: maroon; border: solid;">
+    <p>Subtotal de su compra</p>
+    <div id="sumaTotal" style="float: right;">$0</div>
+    <br>
+    <p>Costo de envío</p>
+    <div id="porcentaje" style="float: right;">$0</div>
+    <br>
+    <hr>
+    <p><b>Total:</b></p>
+    <div id="totaltotal" style="float: right;font-weight: bold;">$0</div> <br><br><br>
+    <button type="button" id="formasdepag" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+      Forma de pago</button>
+    <button type="submit" class="btn btn-primary">Pagar</button>
+  </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -64,6 +209,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="https://kit.fontawesome.com/7d7e96a71c.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

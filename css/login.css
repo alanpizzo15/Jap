@@ -1,0 +1,35 @@
+form {
+  float: left;
+  width: 35%;
+  padding-bottom: 1.5%;
+  border-color:  #008CBA;
+  background-color: #E9EEED;
+  
+}
+#fondo{
+  float: right;
+  width: 65%;  
+}
+h4 {
+  padding-top: 10%;
+  color: darkblue;
+}
+#email {
+  margin: auto;
+
+}
+button{
+  margin: 5%;
+  color: darkblue;
+  background: transparent;
+  border: 2px solid darkblue;
+  border-radius: 6px;
+}
+button:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+
+ 
+ 

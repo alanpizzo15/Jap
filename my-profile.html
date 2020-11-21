@@ -40,17 +40,79 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <div class="dropdown">
+        <a id="nombreUsuario" href="my-profile.html"></a>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="background-color: black; border-color: black;">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="my-profile.html"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;Perfil</a>
+          <a class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart" ></i>&nbsp;&nbsp;Mi Carrito</a>
+          <a onclick="logout()" class="dropdown-item" href="login.html"><i class="fas fa-window-close"></i>&nbsp;&nbsp;Cerrar Sesion</a>
+        </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <!-- boton para modificar el perfil -->
+  <img type="button" height="4%" width="4%" src="img/perfil.jpg" id="boton"
+    style="float: right;margin-top: 2%; margin-right: 8%;" data-toggle="modal" id="formasdepag"
+    data-target="#exampleModal">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modificar Perfil</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+            <p>Nombre:&nbsp<input type="text" class="form-control" style="width: 90%;" id="pila"></p>
+            <p>Apellidos:&nbsp<input type="text" class="form-control" style="width: 90%;" id="apellido"></p>
+            <p>Correo Electrónico:&nbsp<input type="email" class="form-control" style="width: 80%;" id="correoe"></p>
+            <p>Edad:&nbsp<input type="number" class="form-control" style="width: 20%;" id="años"></p>
+            <p>Contacto telefónico:&nbsp<input type="number" class="form-control" style="width: 50%;" id="numero"></p>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-warning" id="guardar">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+  </div>
+  <!-- Mostrar el pefil -->
+  <h1 style="margin-top: 1%; color: cadetblue; margin-left: 10%;"><b><i><u>Perfil</u></i></b></h1>
+  <br>
+  <div class="container" style="border: solid; border-color: cadetblue; border-radius: 4%; margin-bottom: 2%;">
+    <div style=" color: gray;">
+      <br>
+      <p><b>Nombre:</b>
+      <div id="nombre"></div>
+      </p>
+      <hr>
+      <p><b>Apellidos:</b>
+      <div id="apellidos"></div>
+      </p>
+      <hr>
+      <p><b>Correo Electrónico:</b>
+      <div id="email"></div>
+      </p>
+      <hr>
+      <p><b>Edad:</b>
+      <div id="edad"></div>
+      </p>
+      <hr>
+      <p><b>Contacto telefónico:</b>
+      <div id="celular"></div>
+      </p>
+      <br>
+    </div>
+  </div>
+
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
@@ -76,6 +138,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="https://kit.fontawesome.com/7d7e96a71c.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
